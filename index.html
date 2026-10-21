@@ -1,0 +1,1208 @@
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#080a10">
+  <meta name="description" content="ورود مستقیم به استریم‌های AliZoVoX در آپارات و Kick؛ انتخاب پلتفرم و تماشای لایو گیمینگ.">
+  <meta name="robots" content="index,follow">
+  <meta property="og:title" content="AliZoVoX | Live Portal">
+  <meta property="og:description" content="استریم‌های AliZoVoX را در آپارات و Kick تماشا کن.">
+  <meta property="og:type" content="website">
+
+  <title>AliZoVoX | Live Portal</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700;800;900&family=Vazirmatn:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #080a10;
+      --panel: #101522;
+      --text: #f5f7ff;
+      --muted: #a8b0c5;
+      --cyan: #45f3ff;
+      --blue: #168bff;
+      --purple: #a855ff;
+      --pink: #ff43b7;
+      --green: #53f58a;
+      --red: #ff526f;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      min-height: 100%;
+      background: var(--bg);
+      -webkit-text-size-adjust: 100%;
+    }
+
+    body {
+      position: relative;
+      min-height: 100vh;
+      min-height: 100svh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 18px;
+      overflow-x: hidden;
+      color: var(--text);
+      font-family: "Vazirmatn", Tahoma, sans-serif;
+      background:
+        radial-gradient(ellipse at 8% 15%, #ff43b713, transparent 38%),
+        radial-gradient(ellipse at 92% 85%, #45f3ff15, transparent 38%),
+        linear-gradient(140deg, #070910, #0c1120 55%, #080a10);
+    }
+
+    /* Background grid */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(#6b9bb509 1px, transparent 1px),
+        linear-gradient(90deg, #6b9bb509 1px, transparent 1px);
+      background-size: 38px 38px;
+      mask-image: linear-gradient(
+        to bottom,
+        transparent,
+        black 12%,
+        black 88%,
+        transparent
+      );
+    }
+
+    /* Full-page animated background effects */
+    .background-effects {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      overflow: hidden;
+      pointer-events: none;
+      contain: strict;
+    }
+
+    .bg-glow {
+      position: absolute;
+      width: 34vw;
+      height: 34vw;
+      min-width: 180px;
+      min-height: 180px;
+      max-width: 460px;
+      max-height: 460px;
+      border-radius: 50%;
+      filter: blur(75px);
+      opacity: .12;
+      will-change: transform;
+      animation: glowDrift 18s ease-in-out infinite alternate;
+    }
+
+    .bg-glow-blue {
+      top: -15%;
+      left: -10%;
+      background: #087bff;
+    }
+
+    .bg-glow-purple {
+      top: 30%;
+      right: -18%;
+      background: #a020ff;
+      animation-delay: -7s;
+    }
+
+    .bg-glow-cyan {
+      bottom: -25%;
+      left: 30%;
+      background: #00e5ff;
+      animation-delay: -12s;
+    }
+
+    @keyframes glowDrift {
+      0% {
+        transform: translate3d(0, 0, 0) scale(.9);
+      }
+      50% {
+        transform: translate3d(45px, 30px, 0) scale(1.08);
+      }
+      100% {
+        transform: translate3d(-20px, -25px, 0) scale(1);
+      }
+    }
+
+    /* Thin neon beams passing behind the entire page */
+    .bg-beam {
+      position: absolute;
+      width: 48vw;
+      height: 2px;
+      opacity: 0;
+      border-radius: 50%;
+      transform-origin: center;
+      filter: blur(1px);
+      will-change: transform, opacity;
+    }
+
+    .bg-beam::after {
+      content: "";
+      position: absolute;
+      inset: -5px 0;
+      border-radius: inherit;
+      background: inherit;
+      filter: blur(9px);
+    }
+
+    .bg-beam-blue {
+      top: 23%;
+      left: -55%;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        #168bff,
+        #45f3ff,
+        transparent
+      );
+      box-shadow: 0 0 15px #168bff50;
+      animation: beamAcross 13s ease-in-out infinite;
+    }
+
+    .bg-beam-purple {
+      top: 66%;
+      left: -55%;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        #a855ff,
+        #ff43b7,
+        transparent
+      );
+      box-shadow: 0 0 15px #a855ff50;
+      animation: beamAcross 17s ease-in-out -6s infinite;
+    }
+
+    .bg-beam-cyan {
+      top: 82%;
+      left: -55%;
+      height: 1px;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        #45f3ff,
+        #168bff,
+        transparent
+      );
+      animation: beamAcross 20s ease-in-out -10s infinite;
+    }
+
+    @keyframes beamAcross {
+      0% {
+        opacity: 0;
+        transform: translate3d(-10vw, 0, 0) rotate(-13deg);
+      }
+      12% {
+        opacity: .55;
+      }
+      42% {
+        opacity: .22;
+      }
+      68% {
+        opacity: .4;
+      }
+      100% {
+        opacity: 0;
+        transform: translate3d(180vw, 12vh, 0) rotate(-13deg);
+      }
+    }
+
+    /* Click ripple, created only when the empty background is clicked */
+    .bg-ripple {
+      position: fixed;
+      z-index: 0;
+      width: 12px;
+      height: 12px;
+      border: 1px solid #45f3ff;
+      border-radius: 50%;
+      pointer-events: none;
+      transform: translate(-50%, -50%) scale(0);
+      background: radial-gradient(
+        circle,
+        #45f3ff20 0%,
+        #a855ff0c 45%,
+        transparent 72%
+      );
+      box-shadow:
+        0 0 12px #45f3ff25,
+        inset 0 0 10px #a855ff20;
+      animation: rippleExpand .85s ease-out forwards;
+    }
+
+    .bg-ripple::after {
+      content: "";
+      position: absolute;
+      inset: 9px;
+      border: 1px solid #a855ff70;
+      border-radius: 50%;
+    }
+
+    @keyframes rippleExpand {
+      0% {
+        opacity: .85;
+        transform: translate(-50%, -50%) scale(0);
+      }
+      70% {
+        opacity: .5;
+      }
+      100% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(13);
+      }
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 850px;
+      margin: auto;
+    }
+
+    .status {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 13px;
+      direction: ltr;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 3px;
+      color: #c3cce0;
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      flex-shrink: 0;
+      border-radius: 50%;
+      background: var(--red);
+      box-shadow: 0 0 12px #ff526f99;
+      animation: livePulse 1.8s ease-in-out infinite;
+    }
+
+    @keyframes livePulse {
+      50% {
+        opacity: .5;
+        box-shadow: 0 0 4px #ff526f66;
+      }
+    }
+
+    /* Main card */
+    .main-card {
+      position: relative;
+      isolation: isolate;
+      width: 100%;
+      padding: clamp(24px, 4vh, 40px) clamp(24px, 5vw, 56px);
+      overflow: hidden;
+      border: 1px solid #63dff52b;
+      border-radius: 28px;
+      background: linear-gradient(145deg, #141a2af5, #0c101cf5);
+      box-shadow:
+        0 20px 65px #00000055,
+        0 0 35px #45f3ff08,
+        inset 0 1px 0 #ffffff09;
+    }
+
+    .card-light {
+      position: absolute;
+      z-index: -1;
+      pointer-events: none;
+      width: 65%;
+      height: 190px;
+      top: 18%;
+      left: -15%;
+      border-radius: 50%;
+      background: linear-gradient(
+        100deg,
+        transparent,
+        #168bff17,
+        #a855ff1b,
+        #45f3ff12,
+        transparent
+      );
+      filter: blur(38px);
+      animation: lightSweep 13s ease-in-out infinite alternate;
+    }
+
+    @keyframes lightSweep {
+      from {
+        transform: translate3d(-8%, 0, 0) rotate(-12deg);
+      }
+      to {
+        transform: translate3d(110%, 35px, 0) rotate(12deg);
+      }
+    }
+
+    .main-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 10%;
+      right: 10%;
+      height: 2px;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        var(--cyan),
+        var(--purple),
+        var(--pink),
+        transparent
+      );
+      box-shadow: 0 0 18px #45f3ff45;
+      background-size: 200% 100%;
+      animation: topGlow 8s linear infinite;
+    }
+
+    @keyframes topGlow {
+      from { background-position: 0% 50%; }
+      to { background-position: 200% 50%; }
+    }
+
+    .main-card::after {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      width: 230px;
+      height: 230px;
+      left: -145px;
+      bottom: -165px;
+      border: 1px solid #45f3ff20;
+      border-radius: 50%;
+      box-shadow:
+        0 0 0 20px #45f3ff05,
+        0 0 0 42px #a855ff05,
+        0 0 0 64px #45f3ff03;
+      pointer-events: none;
+    }
+
+    .card-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Profile */
+    .profile-wrap {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 15px;
+    }
+
+    .profile-frame {
+      position: relative;
+      width: 102px;
+      height: 102px;
+      padding: 3px;
+      border-radius: 27px;
+      transform: rotate(-3deg);
+      background: linear-gradient(
+        135deg,
+        var(--cyan),
+        #18273d 42%,
+        var(--purple),
+        var(--pink)
+      );
+      box-shadow:
+        0 0 20px #45f3ff22,
+        0 0 28px #a855ff18;
+      transition: transform .25s ease;
+    }
+
+    .profile-frame:hover {
+      transform: rotate(0deg) scale(1.035);
+    }
+
+    .profile-image {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 24px;
+      border: 2px solid #101522;
+      transform: rotate(3deg);
+    }
+
+    /* Gaming typography */
+    .brand-title {
+      direction: ltr;
+      text-align: center;
+      white-space: nowrap;
+      font-family: "Orbitron", "Arial Black", Arial, sans-serif;
+      font-size: clamp(42px, 7.5vw, 72px);
+      font-weight: 900;
+      line-height: 1.2;
+      letter-spacing: -2px;
+      filter: drop-shadow(0 0 17px #45f3ff13);
+    }
+
+    .brand-blue {
+      color: #45cfff;
+      background: linear-gradient(
+        180deg,
+        #ffffff 0%,
+        #c8f7ff 15%,
+        #45d7ff 48%,
+        #168bff 100%
+      );
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .brand-purple {
+      color: #a855ff;
+      background: linear-gradient(
+        180deg,
+        #ffffff 0%,
+        #edddff 15%,
+        #c47bff 48%,
+        #8b32f5 100%
+      );
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .brand-x {
+      color: #a855ff;
+      -webkit-text-fill-color: #a855ff;
+      text-shadow: 0 0 20px #a855ff30;
+    }
+
+    .brand-caption {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-top: 9px;
+      direction: ltr;
+      text-align: center;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 3px;
+    }
+
+    .caption-gaming {
+      color: var(--cyan);
+      text-shadow: 0 0 12px #45f3ff20;
+    }
+
+    .caption-streaming {
+      color: #bd83ff;
+      text-shadow: 0 0 12px #a855ff20;
+    }
+
+    .caption-community {
+      color: var(--green);
+      text-shadow: 0 0 12px #53f58a20;
+    }
+
+    .caption-separator {
+      color: #65718b;
+    }
+
+    /* Persian text */
+    .headline {
+      margin-top: 19px;
+      text-align: center;
+      font-size: clamp(22px, 3.5vw, 29px);
+      font-weight: 900;
+      line-height: 1.65;
+      color: #fff;
+    }
+
+    .description {
+      max-width: 540px;
+      margin: 5px auto 0;
+      text-align: center;
+      font-size: clamp(14px, 2vw, 16px);
+      font-weight: 500;
+      line-height: 1.9;
+      color: var(--muted);
+    }
+
+    .choose-label {
+      margin-top: 22px;
+      margin-bottom: 12px;
+      text-align: center;
+      font-size: 14px;
+      font-weight: 800;
+      color: #e2e8f7;
+    }
+
+    /* Platform cards */
+    .platforms {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      direction: ltr;
+    }
+
+    .platform {
+      --accent: var(--cyan);
+
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 13px;
+      min-width: 0;
+      min-height: 100px;
+      padding: 14px;
+      overflow: hidden;
+      text-decoration: none;
+      color: var(--text);
+      border: 1px solid #ffffff15;
+      border-radius: 19px;
+      background: linear-gradient(145deg, #ffffff08, #ffffff02);
+      transition:
+        transform .2s ease,
+        border-color .2s ease,
+        background .2s ease,
+        box-shadow .2s ease;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .platform.aparat { --accent: var(--red); }
+    .platform.kick { --accent: var(--green); }
+
+    .platform::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      width: 3px;
+      background: var(--accent);
+      box-shadow: 0 0 14px var(--accent);
+      opacity: .75;
+    }
+
+    .platform::after {
+      content: "";
+      position: absolute;
+      right: -55px;
+      bottom: -70px;
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      background: var(--accent);
+      opacity: 0;
+      filter: blur(48px);
+      transition: opacity .2s ease;
+      pointer-events: none;
+    }
+
+    .platform:hover,
+    .platform:focus-visible {
+      transform: translateY(-3px);
+      border-color: var(--accent);
+      background: #ffffff0b;
+      box-shadow: 0 10px 26px #00000028;
+      outline: none;
+    }
+
+    .platform:hover::after,
+    .platform:focus-visible::after {
+      opacity: .16;
+    }
+
+    .platform-icon {
+      position: relative;
+      z-index: 1;
+      width: 58px;
+      height: 58px;
+      flex: 0 0 58px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+      border-radius: 14px;
+      background: #080a10;
+      border: 1px solid color-mix(in srgb, var(--accent) 45%, transparent);
+    }
+
+    .platform-icon img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .platform-info {
+      position: relative;
+      z-index: 1;
+      flex: 1;
+      min-width: 0;
+    }
+
+    .platform-name {
+      display: block;
+      direction: ltr;
+      text-align: left;
+      font-family: "Orbitron", "Arial Black", Arial, sans-serif;
+      font-size: clamp(17px, 2.3vw, 23px);
+      font-weight: 900;
+      letter-spacing: .3px;
+      color: #fff;
+    }
+
+    .platform-description {
+      display: block;
+      margin-top: 5px;
+      direction: rtl;
+      text-align: left;
+      font-family: "Vazirmatn", Tahoma, sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 1.7;
+      color: var(--muted);
+    }
+
+    .platform-arrow {
+      position: relative;
+      z-index: 1;
+      align-self: flex-start;
+      margin-left: auto;
+      color: var(--accent);
+      font-family: Arial, sans-serif;
+      font-size: 20px;
+      transition: transform .2s ease;
+    }
+
+    .platform:hover .platform-arrow {
+      transform: translate(2px, -2px);
+    }
+
+    /* Footer */
+    .footer {
+      margin-top: 20px;
+      padding-top: 14px;
+      border-top: 1px solid #ffffff0c;
+      text-align: center;
+    }
+
+    .footer-message {
+      font-size: 13px;
+      font-weight: 600;
+      line-height: 1.9;
+      color: #c4cce0;
+    }
+
+    .footer-brand {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 9px;
+      direction: ltr;
+      font-family: "Orbitron", Arial, sans-serif;
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: 2px;
+    }
+
+    .footer-brand .footer-name {
+      color: #45d7ff;
+    }
+
+    .footer-brand .game-on {
+      color: #bd83ff;
+    }
+
+    /* Desktop: more balanced, compact panel */
+    @media (min-width: 601px) {
+      body {
+        padding: 10px 18px;
+      }
+
+      .container {
+        max-width: 690px;
+      }
+
+      .main-card {
+        min-height: 590px;
+        padding: 28px clamp(28px, 4vw, 42px);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .card-content {
+        width: 100%;
+      }
+
+      .profile-wrap {
+        margin-bottom: 12px;
+      }
+
+      .profile-frame {
+        width: 90px;
+        height: 90px;
+      }
+
+      .brand-title {
+        font-size: clamp(43px, 5.2vw, 64px);
+        letter-spacing: -1.8px;
+      }
+
+      .brand-caption {
+        margin-top: 8px;
+      }
+
+      .headline {
+        margin-top: 16px;
+      }
+
+      .choose-label {
+        margin-top: 18px;
+      }
+
+      .platforms {
+        gap: 12px;
+      }
+
+      .platform {
+        min-height: 88px;
+        padding: 12px;
+        gap: 11px;
+      }
+
+      .platform-icon {
+        width: 52px;
+        height: 52px;
+        flex-basis: 52px;
+      }
+
+      .footer {
+        margin-top: 17px;
+        padding-top: 12px;
+      }
+    }
+
+    /* Short desktop screens */
+    @media (min-width: 601px) and (max-height: 800px) {
+      body {
+        padding-top: 8px;
+        padding-bottom: 8px;
+      }
+
+      .status {
+        margin-bottom: 8px;
+      }
+
+      .main-card {
+        min-height: 0;
+        padding-top: 18px;
+        padding-bottom: 18px;
+      }
+
+      .profile-wrap {
+        margin-bottom: 8px;
+      }
+
+      .profile-frame {
+        width: 76px;
+        height: 76px;
+        border-radius: 21px;
+      }
+
+      .profile-image {
+        border-radius: 18px;
+      }
+
+      .brand-title {
+        font-size: clamp(39px, 5.5vh, 53px);
+      }
+
+      .brand-caption {
+        margin-top: 5px;
+        font-size: 10px;
+      }
+
+      .headline {
+        margin-top: 8px;
+        font-size: 22px;
+      }
+
+      .description {
+        margin-top: 2px;
+        font-size: 13px;
+      }
+
+      .choose-label {
+        margin-top: 11px;
+        margin-bottom: 8px;
+      }
+
+      .platform {
+        min-height: 75px;
+        padding: 9px 11px;
+      }
+
+      .platform-icon {
+        width: 46px;
+        height: 46px;
+        flex-basis: 46px;
+      }
+
+      .footer {
+        margin-top: 11px;
+        padding-top: 8px;
+      }
+
+      .footer-brand {
+        margin-top: 5px;
+      }
+    }
+
+    /* Mobile: preserve the existing mobile layout */
+    @media (max-width: 600px) {
+      body {
+        padding: 16px 12px;
+      }
+
+      .container {
+        max-width: 440px;
+      }
+
+      .status {
+        gap: 8px;
+        margin-bottom: 11px;
+        font-size: 10px;
+        letter-spacing: 2.4px;
+      }
+
+      .main-card {
+        min-height: 0;
+        padding: 25px 17px 20px;
+        border-radius: 23px;
+      }
+
+      .profile-wrap {
+        margin-bottom: 13px;
+      }
+
+      .profile-frame {
+        width: 91px;
+        height: 91px;
+        border-radius: 24px;
+      }
+
+      .profile-image {
+        border-radius: 21px;
+      }
+
+      .brand-title {
+        font-family: "Orbitron", "Arial Black", Arial, sans-serif;
+        font-size: clamp(36px, 9vw, 49px);
+        letter-spacing: -1.8px;
+      }
+
+      .brand-caption {
+        gap: 6px;
+        margin-top: 9px;
+        font-size: 10px;
+        letter-spacing: 1.6px;
+      }
+
+      .headline {
+        margin-top: 19px;
+        font-size: clamp(20px, 5.5vw, 25px);
+      }
+
+      .description {
+        font-size: 14px;
+      }
+
+      .choose-label {
+        margin-top: 22px;
+        margin-bottom: 12px;
+        font-size: 13px;
+      }
+
+      .platforms {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 11px;
+      }
+
+      .platform {
+        min-height: 82px;
+        padding: 11px 13px;
+        gap: 13px;
+        border-radius: 17px;
+      }
+
+      .platform-icon {
+        width: 56px;
+        height: 56px;
+        flex-basis: 56px;
+        border-radius: 13px;
+      }
+
+      .platform-name {
+        font-size: 20px;
+      }
+
+      .platform-description {
+        margin-top: 3px;
+        font-size: 12px;
+      }
+
+      .footer {
+        margin-top: 17px;
+        padding-top: 13px;
+      }
+
+      .footer-message {
+        font-size: 12px;
+      }
+
+      .footer-brand {
+        margin-top: 8px;
+        gap: 7px;
+        letter-spacing: 1.8px;
+        font-size: 9px;
+      }
+
+      .bg-glow {
+        opacity: .10;
+        filter: blur(60px);
+      }
+
+      .bg-beam {
+        width: 75vw;
+      }
+    }
+
+    @media (max-width: 360px) {
+      .main-card {
+        padding-right: 13px;
+        padding-left: 13px;
+      }
+
+      .brand-title {
+        font-size: 34px;
+        letter-spacing: -1.5px;
+      }
+
+      .brand-caption {
+        gap: 5px;
+        font-size: 9px;
+        letter-spacing: 1px;
+      }
+
+      .headline {
+        font-size: 20px;
+      }
+
+      .platform-icon {
+        width: 50px;
+        height: 50px;
+        flex-basis: 50px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
+      }
+
+      .bg-ripple {
+        display: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Animated background, behind the content -->
+  <div class="background-effects" aria-hidden="true">
+    <div class="bg-glow bg-glow-blue"></div>
+    <div class="bg-glow bg-glow-purple"></div>
+    <div class="bg-glow bg-glow-cyan"></div>
+    <div class="bg-beam bg-beam-blue"></div>
+    <div class="bg-beam bg-beam-purple"></div>
+    <div class="bg-beam bg-beam-cyan"></div>
+  </div>
+
+  <main class="container">
+    <div class="status">
+      <span class="status-dot" aria-hidden="true"></span>
+      <span>ALIZOVOX / LIVE PORTAL</span>
+    </div>
+
+    <section class="main-card" aria-labelledby="brand-title">
+      <div class="card-light" aria-hidden="true"></div>
+
+      <div class="card-content">
+        <div class="profile-wrap">
+          <div class="profile-frame">
+            <img
+              class="profile-image"
+              src="profile.webp"
+              alt="پروفایل AliZoVoX"
+              width="102"
+              height="102"
+              fetchpriority="high"
+              decoding="async"
+            >
+          </div>
+        </div>
+
+        <h1 class="brand-title" id="brand-title" aria-label="AliZoVoX"><span class="brand-blue">AliZo</span><span class="brand-purple">Vo</span><span class="brand-x">X</span></h1>
+
+        <div class="brand-caption" aria-label="Gaming, Streaming, Community">
+          <span class="caption-gaming">GAMING</span>
+          <span class="caption-separator">·</span>
+          <span class="caption-streaming">STREAMING</span>
+          <span class="caption-separator">·</span>
+          <span class="caption-community">COMMUNITY</span>
+        </div>
+
+        <h2 class="headline">آماده‌ای بپری توی لایو؟ 🎮</h2>
+
+        <p class="description">
+          پلتفرمت رو انتخاب کن و مستقیم وارد استریم شو.
+          منتظرتیم!
+        </p>
+
+        <p class="choose-label">از کدوم پلتفرم می‌خوای وارد بشی؟</p>
+
+        <nav class="platforms" aria-label="پلتفرم‌های استریم">
+          <a
+            class="platform aparat"
+            href="https://www.aparat.com/AliZoVoX/live"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="ورود به لایو AliZoVoX در آپارات"
+          >
+            <div class="platform-icon">
+              <img
+                src="aparat.webp"
+                alt=""
+                width="58"
+                height="58"
+                decoding="async"
+              >
+            </div>
+
+            <div class="platform-info">
+              <span class="platform-name">APARAT</span>
+              <span class="platform-description">تماشای لایو در آپارات</span>
+            </div>
+
+            <span class="platform-arrow" aria-hidden="true">↗</span>
+          </a>
+
+          <a
+            class="platform kick"
+            href="https://kick.com/alizovox"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="ورود به لایو AliZoVoX در Kick"
+          >
+            <div class="platform-icon">
+              <img
+                src="kick.webp"
+                alt=""
+                width="58"
+                height="58"
+                decoding="async"
+              >
+            </div>
+
+            <div class="platform-info">
+              <span class="platform-name">KICK</span>
+              <span class="platform-description">تماشای لایو در کیک</span>
+            </div>
+
+            <span class="platform-arrow" aria-hidden="true">↗</span>
+          </a>
+        </nav>
+
+        <footer class="footer">
+          <p class="footer-message">
+            هرجا راحت‌تری، همون‌جا ببینیم همدیگه رو ✦
+          </p>
+
+          <div class="footer-brand">
+            <span class="footer-name">ALIZOVOX</span>
+            <span class="game-on">GAME ON</span>
+          </div>
+        </footer>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    (() => {
+      const reduceMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+      );
+
+      if (reduceMotion.matches) return;
+
+      let lastRippleTime = 0;
+
+      document.addEventListener("pointerdown", (event) => {
+        if (event.button !== 0) return;
+
+        /* Never trigger on the card, its links, or the status label */
+        if (
+          event.target.closest(".main-card") ||
+          event.target.closest(".status") ||
+          event.target.closest("a, button")
+        ) {
+          return;
+        }
+
+        /* Avoid creating too many effects during rapid clicks */
+        const now = performance.now();
+        if (now - lastRippleTime < 140) return;
+        lastRippleTime = now;
+
+        const ripple = document.createElement("span");
+        ripple.className = "bg-ripple";
+        ripple.setAttribute("aria-hidden", "true");
+        ripple.style.left = event.clientX + "px";
+        ripple.style.top = event.clientY + "px";
+
+        document.body.appendChild(ripple);
+
+        ripple.addEventListener("animationend", () => {
+          ripple.remove();
+        }, { once: true });
+
+        /* Fallback cleanup if animationend is not fired */
+        window.setTimeout(() => {
+          ripple.remove();
+        }, 1200);
+      }, { passive: true });
+    })();
+  </script>
+</body>
+</html>
